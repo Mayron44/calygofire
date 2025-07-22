@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  
+  /* Custom fire theme colors */
+  --fire-blue: hsl(207, 90%, 54%);
+  --fire-red: hsl(0, 74%, 50%);
+  --fire-orange: hsl(36, 100%, 50%);
+  --fire-green: hsl(122, 39%, 49%);
+  --fire-gray: hsl(0, 0%, 62%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .gradient-bg {
+    background: linear-gradient(135deg, rgba(25, 118, 210, 0.1) 0%, rgba(211, 47, 47, 0.1) 100%);
+  }
+  
+  .gradient-overlay {
+    background: linear-gradient(135deg, var(--fire-blue) 0%, var(--fire-red) 100%);
+  }
+  
+  .status-sold {
+    color: var(--fire-green);
+  }
+  
+  .status-refused {
+    color: var(--fire-red);
+  }
+  
+  .status-revisit {
+    color: var(--fire-orange);
+  }
+  
+  .status-unvisited {
+    color: var(--fire-gray);
+  }
+}
+
+/* Leaflet map styles */
+.leaflet-container {
+  height: 400px;
+  width: 100%;
+  border-radius: 0.5rem;
+  z-index: 1;
+}
+
+.custom-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Dialog modal z-index to appear above map */
+[data-radix-dialog-content] {
+  z-index: 9999 !important;
+}
+
+[data-radix-dialog-overlay] {
+  z-index: 9998 !important;
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 768px) {
+  .leaflet-container {
+    height: 300px;
+  }
+}
