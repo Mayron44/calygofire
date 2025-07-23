@@ -208,7 +208,7 @@ export class SupabaseStorage implements IStorage {
   // Tournees
   async getTournees(pompierId?: number): Promise<Tournee[]> {
     let query = supabase.from("tournees").select("*");
-    if (pompierId) query = query.eq("pompierId", pompierId);
+    if (pompierId) query = query.eq("pompier_id", pompierId);
     query = query.order("created_at", { ascending: false });
     const { data, error } = await query;
     if (error) throw error;
