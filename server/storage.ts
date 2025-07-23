@@ -87,7 +87,7 @@ export class SupabaseStorage implements IStorage {
   }
 
   async getUnapprovedUsers(): Promise<User[]> {
-    const { data, error } = await supabase.from("users").select("*").eq("isApproved", false);
+    const { data, error } = await supabase.from("users").select("*").eq("is_approved", false);
     if (error) throw error;
     return data as User[];
   }
