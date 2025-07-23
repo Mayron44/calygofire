@@ -114,7 +114,7 @@ export class SupabaseStorage implements IStorage {
     if (filters?.status) query = query.eq("status", filters.status);
     if (filters?.assignedTo) query = query.eq("assignedTo", filters.assignedTo);
     if (filters?.city) query = query.eq("city", filters.city);
-    query = query.order("createdAt", { ascending: true });
+    query = query.order("created_at", { ascending: true });
     const { data, error } = await query;
     if (error) throw error;
     return data as Address[];
