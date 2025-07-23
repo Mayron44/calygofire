@@ -81,7 +81,7 @@ export class SupabaseStorage implements IStorage {
   }
 
   async approveUser(id: number, approvedBy: number): Promise<User> {
-    const { data, error } = await supabase.from("users").update({ isApproved: true, approvedBy }).eq("id", id).select().single();
+    const { data, error } = await supabase.from("users").update({ is_approved: true, approved_by: approvedBy }).eq("id", id).select().single();
     if (error) throw error;
     return data as User;
   }
