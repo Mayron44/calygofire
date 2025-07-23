@@ -95,7 +95,7 @@ export class SupabaseStorage implements IStorage {
   async getAllUsers(): Promise<User[]> {
     try {
       console.log("🔍 Récupération de tous les utilisateurs...");
-      const { data, error } = await supabase.from("users").select("*").order("createdAt", { ascending: true });
+      const { data, error } = await supabase.from("users").select("*").order("created_at", { ascending: true });
       if (error) {
         console.error("❌ Erreur lors de la récupération des utilisateurs:", error);
         throw error;
