@@ -4,6 +4,12 @@ import { users, addresses, visits, sales, tournees, type User, type InsertUser, 
 
 const supabaseUrl = process.env.SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_KEY!;
+
+console.log("🔐 Configuration Supabase:", {
+  url: supabaseUrl ? "✅ Définie" : "❌ Manquante",
+  key: supabaseKey ? "✅ Définie" : "❌ Manquante"
+});
+
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 export interface IStorage {
