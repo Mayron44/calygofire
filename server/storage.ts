@@ -184,7 +184,7 @@ export class SupabaseStorage implements IStorage {
     if (filters?.pompierId) query = query.eq("pompierId", filters.pompierId);
     if (filters?.startDate) query = query.gte("createdAt", filters.startDate.toISOString());
     if (filters?.endDate) query = query.lte("createdAt", filters.endDate.toISOString());
-    query = query.order("createdAt", { ascending: false });
+    query = query.order("created_at", { ascending: false });
     const { data, error } = await query;
     if (error) throw error;
     return data as Sale[];
