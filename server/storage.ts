@@ -93,9 +93,19 @@ export class SupabaseStorage implements IStorage {
   }
 
   async getAllUsers(): Promise<User[]> {
-    const { data, error } = await supabase.from("users").select("*").order("createdAt", { ascending: true });
-    if (error) throw error;
-    return data as User[];
+    try {
+      console.log("🔍 Récupération de tous les utilisateurs...");
+      const { data, error } = await supabase.from("users").select("*").order("createdAt", { ascending: true });
+      if (error) {
+        console.error("❌ Erreur lors de la récupération des utilisateurs:", error);
+        throw error;
+      }
+      console.log("✅ Utilisateurs récupérés:", data?.length || 0);
+      return data as User[];
+    } catch (error) {
+      console.error("❌ Erreur dans getAllUsers:", error);
+      throw error;
+    }
   }
 
   // Addresses
