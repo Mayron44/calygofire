@@ -182,8 +182,8 @@ export class SupabaseStorage implements IStorage {
   async getSales(filters?: { pompierId?: number; startDate?: Date; endDate?: Date }): Promise<Sale[]> {
     let query = supabase.from("sales").select("*");
     if (filters?.pompierId) query = query.eq("pompierId", filters.pompierId);
-    if (filters?.startDate) query = query.gte("createdAt", filters.startDate.toISOString());
-    if (filters?.endDate) query = query.lte("createdAt", filters.endDate.toISOString());
+    if (filters?.startDate) query = query.gte("created_at", filters.startDate.toISOString());
+    if (filters?.endDate) query = query.lte("created_at", filters.endDate.toISOString());
     query = query.order("created_at", { ascending: false });
     const { data, error } = await query;
     if (error) throw error;
