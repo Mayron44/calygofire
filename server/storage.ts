@@ -173,7 +173,7 @@ export class SupabaseStorage implements IStorage {
   }
 
   async getVisitsByAddress(addressId: number): Promise<Visit[]> {
-    const { data, error } = await supabase.from("visits").select("*").eq("addressId", addressId).order("createdAt", { ascending: false });
+    const { data, error } = await supabase.from("visits").select("*").eq("addressId", addressId).order("created_at", { ascending: false });
     if (error) throw error;
     return data as Visit[];
   }
